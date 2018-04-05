@@ -1,1 +1,1 @@
-Name: Ashley Fong ONID: fongas
+This is my assignment-1 submission.

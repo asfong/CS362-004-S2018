@@ -57,6 +57,51 @@ unittest3: unittest3.c dominion.o rngs.o
 unittest4: unittest4.c dominion.o rngs.o
 	gcc -o ut4 -g unittest4.c dominion.o rngs.o $(CFLAGS)
 
+randomtestcard1: randomtestcard1.c dominion.o rngs.o
+	gcc -o rt1 -g randomtestcard1.c dominion.o rngs.o $(CFLAGS)
+
+randomtestcard2: randomtestcard2.c dominion.o rngs.o
+	gcc -o rt2 -g randomtestcard2.c dominion.o rngs.o $(CFLAGS)
+
+randomtestadventurer: randomtestadventurer.c dominion.o rngs.o
+	gcc -o rta -g randomtestadventurer.c dominion.o rngs.o $(CFLAGS)
+
+randomtestcard1.out: randomtestcard1.c
+
+	make rngs.o
+	make dominion.o
+
+	echo "Result for randomtestcard1.out" > randomtestcard1.out
+
+	echo "randomtestcard1.c:" >> randomtestcard1.out
+	gcc -o rt1 -g randomtestcard1.c dominion.o rngs.o $(CFLAGS)
+	rt1 >> randomtestcard1.out
+	gcov -f -b randomtestcard1.c >> randomtestcard1.out
+
+randomtestcard2.out: randomtestcard2.c
+
+	make rngs.o
+	make dominion.o
+
+	echo "Result for randomtestcard2.out" > randomtestcard2.out
+
+	echo "randomtestcard2.c:" >> randomtestcard2.out
+	gcc -o rt2 -g randomtestcard2.c dominion.o rngs.o $(CFLAGS)
+	rt2 >> randomtestcard2.out
+	gcov -f -b randomtestcard2.c >> randomtestcard2.out
+
+randomtestadventurer.out: randomtestadventurer.c
+
+	make rngs.o
+	make dominion.o
+
+	echo "Result for randomtestadventurer.out" > randomtestadventurer.out
+
+	echo "randomtestadventurer.c:" >> randomtestadventurer.out
+	gcc -o rta -g randomtestadventurer.c dominion.o rngs.o $(CFLAGS)
+	rta >> randomtestadventurer.out
+	gcov -f -b randomtestadventurer.c >> randomtestadventurer.out
+
 unittestresults.out: cardtest1.c cardtest2.c cardtest3.c cardtest4.c unittest1.c unittest2.c unittest3.c unittest4.c
 
 	make rngs.o
@@ -114,6 +159,17 @@ dotests:
 	./ut3
 	./ut4
 
+dorandomtests:
+	./rt1
+	./rt2
+	./rta
+
+dorandomtestsgcov:
+	gcov -f -b randomtestcard1.c
+	gcov -f -b randomtestcard2.c
+	gcov -f -b randomtestadventurer.c
+	gcov -f -b dominion.c
+
 dotestsgcov:
 	gcov -f -b cardtest1.c
 	gcov -f -b cardtest2.c
@@ -130,6 +186,8 @@ all: playdom player
 clean:
 	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
 	rm -f unittestresults.out
-
+	rm -f randomtestcard1.out
+	rm -f randomtestcard2.out
+	rm -f randomtestadventurer.out
 
 

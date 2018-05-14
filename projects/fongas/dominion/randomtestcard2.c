@@ -65,7 +65,7 @@ int main() {
 		//initialize game
 		initializeGame(numPlayers, kc, 1000, &state);
 
-		//randomize deck size and hand cout
+		//randomize deck size and hand count
 		deckSize = rand() % (MAX_DECK + 1);
 		handSize = rand() % (deckSize + 1);
 		currentPlayer = 0;

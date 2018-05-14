@@ -9,7 +9,7 @@
 *	3. Current player should receive +1 actions
 *	4. No state change should occur to the victory card piles and kingdom
 *		card piles
-*	5. The village card is discarded
+*	5. The card is discarded
 *	6. At the end of the game, it is worth 1 victory point
 */
 
